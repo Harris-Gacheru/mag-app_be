@@ -108,9 +108,9 @@ class ArticlesAuthorAPI(views.APIView):
             articles_serializer = serializer.ArticleSerializer(articles, many=True)
 
             if len(articles) > 0:
-                return response.Response(articles_serializer.data)
+                return response.Response({'data': articles_serializer.data})
             elif len(articles) == 0:
-                return response.Response({'message': 'Articles not found'}, status=status.HTTP_404_NOT_FOUND)
+                return response.Response({'message': 'Author has no articles published', 'data': []}, status=status.HTTP_404_NOT_FOUND)
             return response.Response(articles_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
 class ArticlesCategoryAPI(views.APIView):
