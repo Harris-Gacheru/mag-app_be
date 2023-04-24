@@ -17,4 +17,5 @@ urlpatterns = [
     path('articles/author/<int:author>/', views.ArticlesAuthorAPI.as_view(), name="Author Articles Listing"),
     path('articles/category/<int:category>/', views.ArticlesCategoryAPI.as_view(), name="Category Articles Listing"),
     path('article/<int:pk>', views.ArticleAPI.as_view(), name="Article"),
+    path('article/add/', views.ArticleCreateAPI.as_view(), name="Add Article"),
 ]

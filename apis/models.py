@@ -19,6 +19,7 @@ class Article(models.Model):
     title = models.CharField("Article Title", max_length=255)
     content = models.TextField("Article content")
     published_on = models.DateField("Publish Date")
+    image = models.CharField("Article Image", max_length=255)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 

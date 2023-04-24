@@ -77,8 +77,15 @@ class CategoryCreateAPI(views.APIView):
         category_serializer = serializer.CategorySerializer(data=request.data)
         if category_serializer.is_valid():
             category_serializer.save()
-            return response.Response(category_serializer.data)
+            return response.Response({'message': 'Submitted successfully', 'data': category_serializer.data})
         return response.Response(category_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class ArticleCreateAPI(views.APIView):
+    def post(self, request):
+        article_serializer = serializer.ArticleSerializer(data=request.data)
+        if article_serializer.is_valid():
+            article_serializer.save()
+            return response.Response({'message': 'Submitted successfully', 'data': article_serializer.data})
+        return response.Response(article_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class ArticlesAPI(views.APIView):
     def get(self, request, pk=None):
